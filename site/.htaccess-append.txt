@@ -1,0 +1,37 @@
+# =====================================================================
+# School On App Connect - PWA / TWA support
+# Append these lines to the END of the ROOT .htaccess of schoolonapp.in
+# (the same file that contains the CodeIgniter RewriteRule block)
+# =====================================================================
+
+<IfModule mod_mime.c>
+    # Manifest files
+    AddType application/manifest+json .webmanifest
+    # Make sure .well-known JSON is served as JSON (LiteSpeed honours this)
+    AddType application/json .json
+</IfModule>
+
+<IfModule mod_headers.c>
+    # Service worker must never be cached, otherwise updates get stuck.
+    <FilesMatch "^sw\.js$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Service-Worker-Allowed "/"
+    </FilesMatch>
+
+    # Manifest and asset links: always revalidate.
+    <FilesMatch "^(manifest\.json|assetlinks\.json)$">
+        Header set Cache-Control "no-cache, must-revalidate"
+    </FilesMatch>
+
+    # Small hardening win - stop advertising the PHP version.
+    Header unset X-Powered-By
+</IfModule>
+
+# Never let the CodeIgniter router swallow these files. The existing
+# "RewriteCond %{REQUEST_FILENAME} !-f" already protects real files, this is
+# only here in case the rewrite block is ever changed.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^\.well-known/ - [L]
+    RewriteRule ^(manifest\.json|sw\.js|offline\.html)$ - [L]
+</IfModule>

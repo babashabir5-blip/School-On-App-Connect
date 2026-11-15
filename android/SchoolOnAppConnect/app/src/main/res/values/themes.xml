@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.SchoolOnAppConnect" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/brand_primary_dark</item>
+        <item name="android:navigationBarColor">@color/brand_primary</item>
+        <item name="android:windowBackground">@color/splash_background</item>
+    </style>
+
+    <style name="Theme.SchoolOnAppConnect.Splash" parent="Theme.SchoolOnAppConnect">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+
+</resources>

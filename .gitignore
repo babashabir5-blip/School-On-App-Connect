@@ -1,0 +1,23 @@
+# --- Secrets / signing (never commit) ---
+keys/
+*.jks
+*.keystore
+keystore.properties
+local.properties
+*.apk
+*.aab
+
+# --- Build output ---
+dist/
+android/SchoolOnAppConnect/.gradle/
+android/SchoolOnAppConnect/build/
+android/SchoolOnAppConnect/app/build/
+android/SchoolOnAppConnect/.idea/
+android/SchoolOnAppConnect/captures/
+android/SchoolOnAppConnect/.externalNativeBuild/
+android/SchoolOnAppConnect/.cxx/
+*.iml
+
+# --- OS noise ---
+.DS_Store
+Thumbs.db

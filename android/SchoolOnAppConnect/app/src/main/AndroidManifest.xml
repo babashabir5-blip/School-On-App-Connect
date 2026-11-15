@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SchoolOnAppConnect"
+        android:usesCleartextTraffic="false">
+
+        <activity
+            android:name=".LauncherActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.SchoolOnAppConnect.Splash">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Start URL of the Trusted Web Activity -->
+            <meta-data
+                android:name="android.support.customtabs.trusted.DEFAULT_URL"
+                android:value="@string/launch_url" />
+
+            <!-- Colours used by Chrome while the TWA is open -->
+            <meta-data
+                android:name="android.support.customtabs.trusted.STATUS_BAR_COLOR"
+                android:resource="@color/brand_primary_dark" />
+            <meta-data
+                android:name="android.support.customtabs.trusted.NAVIGATION_BAR_COLOR"
+                android:resource="@color/brand_primary" />
+
+            <!-- If Digital Asset Links verification fails (or Chrome is missing),
+                 open in a Custom Tab instead of crashing. -->
+            <meta-data
+                android:name="android.support.customtabs.trusted.FALLBACK_STRATEGY"
+                android:value="customtabs" />
+
+            <meta-data
+                android:name="android.support.customtabs.trusted.SCREEN_ORIENTATION"
+                android:value="default" />
+        </activity>
+    </application>
+
+</manifest>
