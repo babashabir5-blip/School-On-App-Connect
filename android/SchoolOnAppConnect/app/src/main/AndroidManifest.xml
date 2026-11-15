@@ -7,10 +7,32 @@
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:manageSpaceActivity="com.google.androidbrowserhelper.trusted.ManageDataLauncherActivity"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SchoolOnAppConnect"
         android:usesCleartextTraffic="false">
+
+        <!-- REQUIRED. androidbrowserhelper's LauncherActivity.launchTwa() calls
+             PackageManager.setComponentEnabledSetting() on this component on every
+             launch to maintain the "Site Settings" shortcut. The library does NOT
+             declare it in its own manifest (2.6.2 and 2.7.4 both ship without it),
+             so if the app omits it the launch throws:
+
+                 IllegalArgumentException: Component class
+                 com.google.androidbrowserhelper.trusted.ManageDataLauncherActivity
+                 does not exist in <package>
+
+             and the app crashes before the TWA ever opens. See the official
+             twa-basic demo manifest for the reference declaration. -->
+        <activity
+            android:name="com.google.androidbrowserhelper.trusted.ManageDataLauncherActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <meta-data
+                android:name="android.support.customtabs.trusted.MANAGE_SPACE_URL"
+                android:value="https://schoolonapp.in/" />
+        </activity>
 
         <activity
             android:name=".LauncherActivity"
