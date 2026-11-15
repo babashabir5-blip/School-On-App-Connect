@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">School On App Connect</string>
     <string name="launch_url" translatable="false">https://schoolonapp.in/</string>
+    <string name="file_provider_authority" translatable="false">in.schoolonapp.connect.fileprovider</string>
 </resources>

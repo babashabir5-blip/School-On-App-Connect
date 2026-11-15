@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Chrome draws the Trusted Web Activity splash screen itself (Chrome 75+),
+    which is what hides its toolbar during the hand-off. To do that it needs
+    access to our splash bitmap, and it gets it through this FileProvider.
+
+    The directory name MUST be "twa_splash/" - the PwaWrapperSplashScreenStrategy
+    in androidbrowserhelper copies the drawable there.
+-->
+<paths>
+    <files-path name="twa_splash" path="twa_splash/" />
+</paths>
