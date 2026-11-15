@@ -1,12 +1,13 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "in.schoolonapp.connect",
       "sha256_cert_fingerprints": [
-        "PASTE_RELEASE_SHA256_HERE",
-        "PASTE_DEBUG_SHA256_HERE"
+        "43:9A:D8:27:AE:A2:88:6C:25:CD:AE:E0:D3:5C:E1:26:10:3F:28:99:0B:C0:EC:37:55:51:20:12:7B:4C:0B:03"
       ]
     }
   }

@@ -34,7 +34,7 @@ schoolonapp-connect/
 | App name | School On App Connect |
 | Launcher label | School On App Connect |
 | Brand colour | `#5061AB` (from the site's login CSS) |
-| minSdk / targetSdk | 23 / 36 |
+| minSdk / targetSdk | 24 / 36 |
 | AGP / Gradle | 8.13.0 / 8.13 |
 | TWA library | `com.google.androidbrowserhelper:androidbrowserhelper:2.7.4` |
 

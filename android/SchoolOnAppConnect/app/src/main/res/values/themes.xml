@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.SchoolOnAppConnect" parent="android:Theme.Material.Light.NoActionBar">
+    <!-- androidbrowserhelper's LauncherActivity extends AppCompatActivity,
+         so this theme MUST descend from an AppCompat theme. -->
+    <style name="Theme.SchoolOnAppConnect" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:statusBarColor">@color/brand_primary_dark</item>
         <item name="android:navigationBarColor">@color/brand_primary</item>
         <item name="android:windowBackground">@color/splash_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="colorPrimary">@color/brand_primary</item>
+        <item name="colorPrimaryDark">@color/brand_primary_dark</item>
+        <item name="colorAccent">@color/brand_primary</item>
     </style>
 
     <style name="Theme.SchoolOnAppConnect.Splash" parent="Theme.SchoolOnAppConnect">

@@ -21,3 +21,7 @@ android/SchoolOnAppConnect/.cxx/
 # --- OS noise ---
 .DS_Store
 Thumbs.db
+
+# --- IDE noise ---
+.idea/
+*.hprof

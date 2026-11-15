@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "in.schoolonapp.connect"
-        minSdk = 23
+        minSdk = 24
         targetSdk = 36
         versionCode = 1
         versionName = "1.0.0"
@@ -42,5 +42,12 @@ android {
 }
 
 dependencies {
+    // TWA launcher (LauncherActivity, splash, asset-link handling).
     implementation("com.google.androidbrowserhelper:androidbrowserhelper:2.7.4")
+
+    // LauncherActivity extends AppCompatActivity, so the theme must be an
+    // AppCompat theme. Declared explicitly instead of relying on the
+    // transitive dependency, so a future browserhelper update cannot
+    // silently change the AppCompat version.
+    implementation("androidx.appcompat:appcompat:1.7.0")
 }

@@ -3,7 +3,6 @@
 ## 2.1 Install Android Studio
 
 1. Download the latest stable Android Studio and install it with default options.
-   It brings its own JDK 17 — your existing Java 8 is not used.
 2. On first launch, accept the SDK setup and let it install **Android SDK
    Platform 36** (Android 16), **build-tools** and **platform-tools**.
 
@@ -14,12 +13,26 @@
 3. Wait for **Gradle sync**. First sync downloads Gradle 8.13, AGP 8.13.0 and
    `androidbrowserhelper:2.7.4` (a few minutes, needs internet).
 
-> The project ships `gradle/wrapper/gradle-wrapper.properties` but not the
-> wrapper `.jar` (binary). Android Studio downloads the distribution and
-> regenerates it on first sync. If sync complains about the wrapper, open
-> **Settings → Build, Execution, Deployment → Build Tools → Gradle**, set
-> *Gradle distribution* to the bundled version, sync once, then run
-> `gradle wrapper` in the Studio terminal.
+### ⚠ Set the Gradle JDK to 17 first
+
+Recent Android Studio releases bundle **JBR 25**. Gradle 8.13 refuses to start on
+Java 25 (`Unsupported class file major version 69`), so the very first sync fails
+until you point Gradle at a JDK 17:
+
+1. **File → Settings → Build, Execution, Deployment → Build Tools → Gradle**
+2. **Gradle JDK** → *Add JDK…* → `C:\Program Files\Eclipse Adoptium\jdk-17.0.21.9-hotspot`
+   (or any installed JDK 17)
+3. **Apply**, then **File → Sync Project with Gradle Files**
+
+The project's `local.properties` already points at
+`C:\Users\user\Android\Sdk` (platform 36 + build-tools 36.0.0 installed). Studio's
+own SDK copy only contains `android-37.0`, so leave `local.properties` alone.
+`local.properties` is git-ignored; if it is ever missing, Studio regenerates it.
+
+> The project ships `gradle/wrapper/gradle-wrapper.properties` and the wrapper
+> scripts (`gradlew`, `gradlew.bat`, `gradle-wrapper.jar`). If the jar is ever
+> missing, run `gradle wrapper --gradle-version 8.13` once — or just use
+> `android\build.ps1`, which regenerates it automatically.
 
 ## 2.3 Create the signing key (do this once, keep it forever)
 
